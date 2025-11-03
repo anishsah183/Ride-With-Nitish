@@ -1,0 +1,570 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Ride With Nitish</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+         :root {
+            --bg: #0a1e40;
+            --card: #102952;
+            --muted: #a9c1e8;
+            --accent: #1e90ff;
+            /* red accent */
+            --glass: rgba(255, 255, 255, 0.05);
+            --max-width: 1100px;
+        }
+        
+        * {
+            box-sizing: border-box
+        }
+        
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background: var(--bg);
+            color: #e6eef8;
+            scroll-behavior: smooth
+        }
+        /* layout */
+        
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 40px 20px
+        }
+        
+        nav {
+            position: fixed;
+            top: 18px;
+            left: 18px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: transparent
+        }
+        /* multicolor site title */
+        
+        .site-title {
+            font-weight: 800;
+            font-size: 20px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            gap: 10px
+        }
+        
+        .site-title .brand {
+            background: linear-gradient(90deg, #ff2d2d, #000 60%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: #ff2d2d;
+            font-weight: 800
+        }
+        
+        .site-title .tag {
+            font-weight: 700;
+            color: var(--muted);
+            font-size: 12px
+        }
+        /* main sections */
+        
+        section {
+            padding: 84px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02)
+        }
+        
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 360px;
+            gap: 40px;
+            align-items: center
+        }
+        
+        .hero-left {
+            padding-left: 10px
+        }
+        
+        .kicker {
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 8px
+        }
+        /* Gradient heading style for Rideowner and Ride With Nitish */
+        
+        .gradient-title {
+            font-size: 40px;
+            line-height: 1;
+            margin: 0;
+            padding: 0;
+            font-weight: 800;
+            display: inline-block;
+            background: linear-gradient(90deg, #ff2d2d 0%, #000 60%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: #f97316;
+        }
+        
+        .sub-intro {
+            margin-top: 12px;
+            font-size: 18px;
+            color: var(--muted)
+        }
+        
+        .profile-card {
+            background: var(--card);
+            border-radius: 14px;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+        
+        .profile-card img {
+            width: 320px;
+            height: 320px;
+            object-fit: cover;
+            border-radius: 14px;
+            border: 4px solid rgba(255, 255, 255, 0.04)
+        }
+        /* Section 2 layout */
+        
+        .two-col {
+            display: grid;
+            grid-template-columns: 440px 1fr;
+            gap: 28px;
+            align-items: start
+        }
+        
+        .vehicle-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px
+        }
+        
+        .vehicle-grid img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform .35s ease;
+            cursor: pointer
+        }
+        
+        .vehicle-grid img:hover {
+            transform: scale(1.04)
+        }
+        
+        .tabs {
+            background: var(--card);
+            padding: 16px;
+            border-radius: 12px
+        }
+        
+        .tab-buttons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px
+        }
+        
+        .tab-buttons button {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 10px 14px;
+            border-radius: 10px;
+            color: var(--muted);
+            cursor: pointer;
+            font-weight: 600;
+            transition: all .22s ease
+        }
+        
+        .tab-buttons button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            color: #fff;
+            border-color: rgba(255, 255, 255, 0.08)
+        }
+        
+        .tab-buttons button.active {
+            background: linear-gradient(90deg, #ff2d2d, #000);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.06)
+        }
+        
+        .tab-content {
+            color: var(--muted);
+            line-height: 1.6
+        }
+        /* Our Work gallery */
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px
+        }
+        
+        .gallery img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform .25s ease, filter .25s ease
+        }
+        
+        .gallery img:hover {
+            transform: scale(1.05);
+            filter: brightness(1.05)
+        }
+        /* Contact layout */
+        
+        .contact-wrap {
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 28px
+        }
+        
+        .contact-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            padding: 20px;
+            border-radius: 12px
+        }
+        
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px
+        }
+        
+        .contact-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 600
+        }
+        
+        .contact-links a:hover {
+            color: #fff;
+            text-decoration: underline
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px
+        }
+        
+        input,
+        textarea {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 10px;
+            border-radius: 8px;
+            color: #e6eef8
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical
+        }
+        
+        .btn-primary {
+            background: linear-gradient(90deg, #ff2d2d, #f97316);
+            border: 0;
+            padding: 10px 14px;
+            border-radius: 10px;
+            color: #071124;
+            font-weight: 700;
+            cursor: pointer
+        }
+        /* navigation links */
+        
+        .nav-links {
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            display: flex;
+            gap: 12px
+        }
+        
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid transparent
+        }
+        
+        .nav-links a:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.02);
+            transform: translateY(-2px)
+        }
+        /* responsive */
+        
+        @media (max-width:980px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 24px
+            }
+            .two-col {
+                grid-template-columns: 1fr
+            }
+            .container {
+                padding: 24px
+            }
+            .profile-card img {
+                width: 100%;
+                height: auto;
+                max-height: 420px
+            }
+            .gallery {
+                grid-template-columns: repeat(2, 1fr)
+            }
+            .contact-wrap {
+                grid-template-columns: 1fr
+            }
+        }
+        
+        @media (max-width:520px) {
+            .gallery {
+                grid-template-columns: repeat(1, 1fr)
+            }
+        }
+        /* Existing CSS here */
+        /* Add hover effect for social icons at the end */
+        
+        .contact-links a:hover {
+            color: #f97316;
+            transform: scale(1.1);
+            transition: all 0.2s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- top-left title -->
+    <nav>
+        <div class="site-title" aria-hidden>
+            <div class="brand"> <span class="brand">Ride With Nitish</span></div>
+        </div>
+    </nav>
+
+    <!-- top-right nav -->
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#vehicles">Vehicles</a>
+        <a href="#work">Our Work</a>
+        <a href="#contact">Contact Us</a>
+    </div>
+
+    <div class="container">
+        <!-- SECTION 1: INTRO -->
+        <section id="home">
+            <div class="hero">
+                <div class="hero-left">
+                    <h1 class="gradient-title">Rideowner</h1>
+                    <p class="sub-intro">Hi, I'm Nitish, We provide clean, well-maintained EVs and Wingers for weddings, trips, and business events across all over the Nepal. Your comfort and satisfaction is our top priorities - enjoy safe and reliable rides every time you
+                        travel with us! Scroll down to get more details about our vechiles. Thank You!...</p>
+                </div>
+
+                <div class="profile-card">
+                    <!-- placeholder profile image. Replace src with your profile photo URL -->
+                    <img id="profilePhoto" src="nitish3.jpg" alt="Profile Photo">
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: VEHICLES & TABS -->
+        <section id="vehicles">
+            <h3 style="font-size:22px;margin-bottom:14px">Our Vehicles</h3>
+            <div class="two-col">
+                <div>
+                    <div class="vehicle-grid">
+                        <!-- Replace these src attributes with your vehicle photos -->
+                        <img src="jagu2.jpg" alt="vehicle 1">
+                        <img src="jagu.jpg" alt="vehicle 2">
+                        <img src="king2.jpg" alt="vehicle 4">
+                        <img src="tata.jpg" alt="vehicle 5">
+                        <img src="tata2.jpg" alt="vehicle 6">
+                    </div>
+                </div>
+
+                <div>
+                    <div class="tabs">
+                        <div class="tab-buttons" role="tablist">
+                            <button class="tab-btn active" data-tab="features">Features</button>
+                            <button class="tab-btn" data-tab="services">Services</button>
+                        </div>
+
+                        <div id="features" class="tab-content" style="display:block">
+                            <ul>
+                                <li>Well-maintained vehicles with regular servicing</li>
+                                <li>Clean interiors and reliable tires</li>
+                                <li>Experienced drivers</li>
+                                <li>Flexible rental hours and day-wise packages</li>
+                                <li>Safe and insured rides</li>
+                            </ul>
+                            <p style="margin-top:12px"><strong>Want to book?</strong> <a href="#contact" style="color:#fff;text-decoration:underline">Contact Us</a></p>
+                        </div>
+
+                        <div id="services" class="tab-content" style="display:none">
+                            <ul>
+                                <li>Wedding rides and ceremonial transport</li>
+                                <li>Picnic and trip rentals</li>
+                                <li>Business and personal rentals</li>
+                                <li>Long-distance travel and tour packages</li>
+                                <li>Event-based hourly rentals</li>
+                            </ul>
+                            <p style="margin-top:12px"><strong>Interested?</strong> <a href="#contact" style="color:#fff;text-decoration:underline">Contact Us</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: OUR WORK -->
+        <section id="work">
+            <h3 style="font-size:22px;margin-bottom:14px">Our Work</h3>
+            <p style="color:var(--muted);margin-bottom:12px">We provides our vechiles for marriage, trips, business events and any other purposes for all over the Nepal. You will get the 24 hours services and for any extra query you can just click on the facebook or instagram name you will get my personal
+                id or you can call me personally and you want to book then leave your details i will contact you personally. Thank you, Visit again.</p>
+            <div class="gallery">
+                <!-- replace these with your work photos -->
+                <img src="virat.jpg" alt="work 1">
+                <img src="kiara2.jpg" alt="work 2">
+                <img src="picnic.jpg" alt="work 3">
+                <img src="personal.jpg" alt="work 4">
+                <img src="manish.jpg" alt="work 5">
+
+            </div>
+        </section>
+
+        <!-- SECTION 4: CONTACT -->
+        <section id="contact">
+            <h3 style="font-size:22px;margin-bottom:14px">Contact Us</h3>
+            <div class="contact-wrap">
+                <div class="contact-card">
+                    <h4 class="gradient-title" style="font-size:28px">Contact Us</h4>
+                    <p style="color:var(--muted);margin-top:8px">Add your contact details below.</p>
+
+                    <div class="contact-links" style="margin-top:14px">
+                        <!-- Replace href="#" with your actual links -->
+                        <!---- <a href="#" id="emailLink">Gmail: sahnitish755@gmail.com</a>
+                        <a href="#" id="phoneLink">Phone: +977-9814773930,+977-9824765441</a>
+                        <a href="https://www.facebook.com/share/1DSbDLbExx/" id="fbLink">Facebook: Nitish Sah</a>
+                        <a href="https://www.instagram.com/nitishkumar.sah.7528?igsh=NnRwZHJ6ZGtqbTNu" id="igLink">Instagram: @Nitish Sah</a> -->
+                        <div class="contact-links" style="display:flex; gap:15px; font-size:24px; margin-top:14px;">
+                            <a href="sahnitish775@gmail.com" target="_blank" style="color:var(--muted);"><i class="fas fa-envelope"></i> sahnitish755@gmail.com</a>
+                            <a href="+977-9814773930" target="_blank" style="color:var(--muted);"><i class="fas fa-phone"></i> +977-9814773930</a>
+                            <a href="https://www.facebook.com/share/1DSbDLbExx/" target="_blank" style="color:var(--muted);"><i class="fab fa-facebook"></i> Nitish Kr Shah</a>
+                            <a href="https://www.instagram.com/nitishkumar.sah.7528?igsh=NnRwZHJ6ZGtqbTNu" target="_blank" style="color:var(--muted);"><i class="fab fa-instagram"></i> Nitish Kr Shah</a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="contact-card">
+                    <form id="contactForm">
+                        <!-- visitor fields -->
+                        <input type="text" id="visitorName" name="name" placeholder="Your name" required />
+                        <input type="text" id="visitorContact" name="contact" placeholder="Phone-number" required />
+                        <textarea id="visitorMessage" name="message" placeholder="Message" required></textarea>
+                        <div style="display:flex;gap:10px;align-items:center">
+                            <button type="submit" class="btn-primary">Send Message</button>
+                            <div id="formStatus" style="color:var(--muted);font-weight:600"></div>
+                        </div>
+                    </form>
+
+                    <p style="color:var(--muted);margin-top:12px;font-size:13px"></p>
+                </div>
+            </div>
+        </section>
+
+        <footer style="padding:36px 0;color:var(--muted);text-align:center">© Ride With Nitish — All rights reserved</footer>
+    </div>
+
+    <script>
+        // ====== Tabs logic ======
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const tab = btn.dataset.tab;
+                document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+                document.getElementById(tab).style.display = 'block';
+            });
+        });
+
+        // ====== Contact Form (send to Google Apps Script) ======
+        const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycby2Xtx6OzqKTq0_ImezCaLQKAMQHOCZocm1TNWKbRiDqxhv9_xIE0YGoGKHwvuwglVU/exec'; // Paste your new web app URL
+
+        const form = document.getElementById('contactForm');
+        const status = document.getElementById('formStatus');
+
+        form.addEventListener('submit', async(e) => {
+            e.preventDefault();
+            status.textContent = 'Sending...';
+            const payload = {
+                name: document.getElementById('visitorName').value.trim(),
+                contact: document.getElementById('visitorContact').value.trim(),
+                message: document.getElementById('visitorMessage').value.trim(),
+                timestamp: new Date().toISOString()
+            };
+            try {
+                const res = await fetch(FORM_ENDPOINT, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+                status.style.color = 'lightgreen';
+                status.textContent = 'Message sent — thank you!';
+                form.reset();
+            } catch (err) {
+                console.error(err);
+                status.style.color = '#f97316';
+                status.textContent = 'Failed to send — please try again.';
+            }
+        });
+    </script>
+
+
+    <!--
+    ==================== GOOGLE APPS SCRIPT (Paste into Apps Script editor) ====================
+    1) In your Google Sheet: Extensions -> Apps Script
+    2) Delete default code and paste the script below.
+    3) Deploy -> New deployment -> Select "Web app".
+       - Execute as: Me
+       - Who has access: Anyone
+    4) Copy the Web App URL and paste it into FORM_ENDPOINT above.
+
+    // ---------- Google Apps Script (Code.gs) ----------
+    const CODE_SNIPPET = `
+    function doPost(e){
+      try{
+        const ss = SpreadsheetApp.getActiveSpreadsheet();
+        const sheet = ss.getSheets()[0]; // first sheet
+        const body = JSON.parse(e.postData.contents);
+        sheet.appendRow([new Date(), body.name || '', body.contact || '', body.message || '']);
+        return ContentService.createTextOutput(JSON.stringify({status:'success'})).setMimeType(ContentService.MimeType.JSON);
+      }catch(err){
+        return ContentService.createTextOutput(JSON.stringify({status:'error', message: err.message})).setMimeType(ContentService.MimeType.JSON);
+      }
+    }
+    `;
+
+    ==========================================================================================
+  -->
+</body>
+
+</html>
